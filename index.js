@@ -1,7 +1,8 @@
 const { chromium } = require("@playwright/test");
-// import { chromium, devices } from '@playwright/test';
+import { storeAnime } from './store';
 
 (async () => {
+  console.log(store.getConection(),'store');
   const selector = "ul.ListAnimes li article.Anime a";
   const selectorAnimePage = "ul.ListCaps > li";
   const url = "https://www3.animeflv.net";
