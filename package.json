@@ -1,6 +1,7 @@
 {
   "name": "anime-scraping",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {},
@@ -9,5 +10,10 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.33.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "firebase": "^9.22.0",
+    "firebase-admin": "^11.8.0"
   }
 }
