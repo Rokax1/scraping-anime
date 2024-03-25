@@ -1,36 +1,20 @@
-'use strict';
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('AnimeCategories', {
-      animeId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        references: {
-          model: 'Animes',
-          key: 'id'
-        }
-      },
-      categoryId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        references: {
-          model: 'Categories',
-          key: 'id'
-        }
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/sequelize');
+const Anime = require('./anime');
+const Category = require('./category');
+
+const AnimeCategory = sequelize.define('AnimeCategory', {
+  animeId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('AnimeCategories');
+  categoryId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
-};
+});
+
+AnimeCategory.belongsTo(Anime);
+AnimeCategory.belongsTo(Category);
+
+module.exports = AnimeCategory;

@@ -1,24 +1,22 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class EpisodeSource extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/sequelize.js';
+import Episode from './episode.js';
+
+const EpisodeSource = sequelize.define('EpisodeSource', {
+  url: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  source: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  EpisodeId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
-  EpisodeSource.init({
-    url: DataTypes.STRING,
-    source: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'EpisodeSource',
-  });
-  return EpisodeSource;
-};
+});
+
+EpisodeSource.belongsTo(Episode);
+
+export default EpisodeSource;

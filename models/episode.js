@@ -1,42 +1,24 @@
-'use strict';
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Episodes', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      animeId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Animes',
-          key: 'id'
-        }
-      },
-      number: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      title: {
-        type: Sequelize.STRING
-      },
-      contentUrl: {
-        type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/sequelize.js';
+import Anime from './anime.js';
+
+const Episode = sequelize.define('Episode', {
+  number: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Episodes');
+  animeId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  title: {
+    type: DataTypes.STRING
+  },
+  content_url: {
+    type: DataTypes.STRING
   }
-};
+});
+
+
+
+export default Episode;

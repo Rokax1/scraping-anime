@@ -14,7 +14,10 @@ module.exports = {
       title: {
         type: Sequelize.DataTypes.STRING
       },
-      contentUrl: {
+      number: {
+        type: Sequelize.DataTypes.INTEGER
+      },
+      content_url: {
         type: Sequelize.DataTypes.STRING
       },
       createdAt: {
