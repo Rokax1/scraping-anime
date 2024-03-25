@@ -1,7 +1,7 @@
 {
   "name": "anime-scraping",
   "version": "1.0.0",
-  "type": "module" ,
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {},
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
+    "express": "^4.19.1",
     "firebase": "^9.22.0",
     "firebase-admin": "^11.8.0",
     "mysql2": "^3.9.2",
